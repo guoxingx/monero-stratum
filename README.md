@@ -78,6 +78,20 @@ Build stratum:
     MONERO_DIR=/path/to/monero cmake .
     make
 
+If you installed boost with homebrew:
+
+    add the following 2 lines to `hashing/src/CMakeLists.txt`
+
+    ```
+    find_package(Boost COMPONENTS thread system program_options date_time filesystem REQUIRED)
+    include_directories(${Boost_INCLUDE_DIRS})
+    ```
+
+    then do the compile.
+
+    MONERO_DIR=/path/to/monero Boost_INCLUDE_DIRS=/usr/local/include/boost cmake .
+    make
+
 ### Running Stratum
 
     ./build/bin/monero-stratum config.json
