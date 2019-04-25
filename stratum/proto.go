@@ -48,6 +48,7 @@ type JobReplyData struct {
 	Blob   string `json:"blob"`
 	JobId  string `json:"job_id"`
 	Target string `json:"target"`
+	Height int64  `json:"height"`
 }
 
 type StatusReply struct {

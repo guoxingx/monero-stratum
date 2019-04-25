@@ -16,7 +16,7 @@ import (
 )
 
 type Job struct {
-	height      int64
+	height int64
 	sync.RWMutex
 	id          string
 	extraNonce  uint32
@@ -33,8 +33,8 @@ type Miner struct {
 	rejects       int64
 	shares        map[int64]int64
 	sync.RWMutex
-	id            string
-	ip            string
+	id string
+	ip string
 }
 
 func (job *Job) submit(nonce string) bool {
@@ -69,7 +69,7 @@ func (cs *Session) getJob(t *BlockTemplate) *JobReplyData {
 	}
 	job.submissions = make(map[string]struct{})
 	cs.pushJob(job)
-	reply := &JobReplyData{JobId: job.id, Blob: blob, Target: cs.endpoint.targetHex}
+	reply := &JobReplyData{JobId: job.id, Blob: blob, Target: cs.endpoint.targetHex, Height: job.height}
 	return reply
 }
 
